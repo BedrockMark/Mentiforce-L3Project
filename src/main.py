@@ -1,4 +1,5 @@
 import time
+from util import *
 from config_loader import GlobalConfig
 from custom_schedulers.naive_scheduler import NaiveScheduler
 from vllm import LLM, SamplingParams
@@ -14,17 +15,15 @@ config = GlobalConfig()
 # 2. Benchmark runner
 ########################################
 def run_benchmark(engine: LLM, name: str):
-    t_start = time.time()
+    
+    prompts = read_first_column("test/test/astronomy_test.csv")
+    # for file_path in read_all_files("test/test/"): # TODO: Extend it to fit the config.
+    #     prompts.extend(read_first_column(file_path))
 
-    prompts = [
-        "Explain gravity in one sentence.",
-        "What is quantum tunneling?",
-        "Write a haiku about the ocean.",
-    ]
-
-    sampling = SamplingParams(max_tokens=50)
+    # sampling = SamplingParams(max_tokens=256)
     # --- TODO: random input ---
-    output = engine.generate(prompts, sampling)
+    t_start = time.time()
+    output = engine.generate(prompts) #, sampling)
 
     elapsed = time.time() - t_start
 
@@ -47,10 +46,7 @@ def create_engine(custome_scheduler=None):
     return LLM(
             model=config.model_name,
             tokenizer=config.model_name,
-            quantization="awq",
             max_model_len=2048,
-            max_num_seqs=4,
-            max_num_batched_tokens=2048,
             gpu_memory_utilization=0.8,
             scheduler_cls=custome_scheduler,
         )

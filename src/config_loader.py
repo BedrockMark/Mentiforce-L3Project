@@ -6,10 +6,11 @@ class GlobalConfig:
         self,
         config_path: str = "config/default.yaml"
     ):
-        self.model_name :str= "Qwen/Qwen3-4B-AWQ"
+        self.model_name :str= "Qwen/Qwen3-4B-AWQ" #"unsloth/Llama-3.2-1B-Instruct-unsloth-bnb-4bit"
         conf :dict= yaml.safe_load(open(config_path, "r"))
         if not conf:
             print("[WARNING] GlobalConfig has NO config abstracted correctly, \nusing default!")
             return
-        for k,v in conf:
+        print(conf)
+        for (k,v) in conf.items():
             if hasattr(self,k): setattr(self,k,v)

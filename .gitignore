@@ -1,6 +1,7 @@
 # Customize
 .doc
 src/.crap
+*.Identifier
 
 # Byte-compiled  optimized  DLL files
 __pycache__
