@@ -3,4 +3,5 @@ matplotlib # Matrics visualization
 transformers # Hugging face LLM Lib
 pyyaml # Config loader
 bitsandbytes # For quantanize module test
+nvidia-ml-py # NVIDIA GPU Monitor
 # pandas # Dataset import now use pure csv lib, should be enough :)

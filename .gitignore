@@ -2,6 +2,7 @@
 .doc
 src/.crap
 *.Identifier
+test/auxiliary_train/race.csv # It's larger than 146 MB...
 
 # Byte-compiled  optimized  DLL files
 __pycache__

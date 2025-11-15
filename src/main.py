@@ -1,6 +1,6 @@
 import time
 from util import *
-from config_loader import GlobalConfig
+from src.config import GlobalConfig
 from custom_schedulers.naive_scheduler import NaiveScheduler
 from vllm import LLM, SamplingParams
 from vllm.v1.core.sched.scheduler import Scheduler
@@ -35,21 +35,6 @@ def run_benchmark(engine: LLM, name: str):
     }
 
     return metrics, output
-
-
-########################################
-# 3. Create engines
-########################################
-
-def create_engine(custome_scheduler=None):
-    if not custome_scheduler: custome_scheduler = Scheduler
-    return LLM(
-            model=config.model_name,
-            tokenizer=config.model_name,
-            max_model_len=2048,
-            gpu_memory_utilization=0.8,
-            scheduler_cls=custome_scheduler,
-        )
 
 
 ########################################
