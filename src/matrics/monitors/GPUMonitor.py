@@ -1,7 +1,7 @@
 import time
 import threading
 from pynvml import *
-from matrics import plot_graph
+from matrics.matrics import plot_graph
 
 
 class GPUMemoryMonitor:

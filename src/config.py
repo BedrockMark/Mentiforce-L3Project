@@ -4,6 +4,7 @@ import yaml
 class GlobalConfig:
     
     model_name :str= "Qwen/Qwen3-4B-AWQ" #"unsloth/Llama-3.2-1B-Instruct-unsloth-bnb-4bit"
+    output_path: str = "output/"
     
     def __init__(
         self,
