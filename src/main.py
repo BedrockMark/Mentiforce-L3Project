@@ -21,9 +21,9 @@ def run_benchmark():
     
     # 配置参数
     vllm_base_url = "http://127.0.0.1:8000"
-    lambda_rate = 1  # 每秒 0.5 个请求（每2秒一个请求）
+    lambda_rate = 3  # 每秒 0.5 个请求（每2秒一个请求）
     max_requests = None  # 最多发送5个请求
-    duration = 10  # 不限制时长，使用 max_requests
+    duration = 30  # 不限制时长，使用 max_requests
     
     # 测试提示列表
     test_prompts = read_first_column("test/test/astronomy_test.csv")
